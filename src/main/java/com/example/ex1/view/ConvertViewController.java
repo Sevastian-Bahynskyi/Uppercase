@@ -8,6 +8,9 @@ import com.example.ex1.model.*;
 import com.example.ex1.view.*;
 import com.example.ex1.view_model.*;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
 public class ConvertViewController
 {
     private ConvertViewModel viewModel;
@@ -26,10 +29,10 @@ public class ConvertViewController
     {
         this.viewModel = viewModel;
         this.viewHandler = viewHandler;
+        this.root = root;
         viewModel.bindRequest(requestField.textProperty());
         viewModel.bindReply(replyField.textProperty());
         viewModel.bindError(errorLabel.textProperty());
-        this.root = root;
     }
 
     public Region getRoot()
@@ -37,15 +40,15 @@ public class ConvertViewController
         return root;
     }
 
-    public void reset()
-    {
-
-    }
-
     @FXML
     public void onSubmit()
     {
         viewModel.convert();
+    }
+    @FXML
+    public void onShowLog()
+    {
+        viewHandler.openView(ViewFactory.SHOW_LOG);
     }
 
     @FXML
@@ -53,4 +56,10 @@ public class ConvertViewController
     {
         viewModel.convert();
     }
+
+//    @Override
+//    public void propertyChange(PropertyChangeEvent evt)
+//    {
+//        viewHandler.openView(ViewFactory.CONVERT);
+//    }
 }

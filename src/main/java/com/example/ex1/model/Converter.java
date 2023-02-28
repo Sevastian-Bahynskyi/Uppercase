@@ -1,10 +1,13 @@
 package com.example.ex1.model;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
 public class Converter
 {
     private ArrayList<String> logList;
+
 
     public Converter()
     {
@@ -12,27 +15,23 @@ public class Converter
     }
 
     public String toUpperCase(String txt)
-
     {
-
         return txt.toUpperCase();
+    }
 
+    public ArrayList<String> getLogList()
+    {
+        return logList;
     }
 
     public void addLog(String txt)
-
     {
-
         logList.add(txt);
-
     }
 
     public int getLogSize()
-
     {
-
         return logList.size();
-
     }
 
 }

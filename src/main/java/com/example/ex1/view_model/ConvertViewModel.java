@@ -1,10 +1,14 @@
 package com.example.ex1.view_model;
 
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import com.example.ex1.model.*;
 import com.example.ex1.view.*;
 import com.example.ex1.view_model.*;
+
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
 public class ConvertViewModel
 {
@@ -12,12 +16,14 @@ public class ConvertViewModel
     private StringProperty request;
     private StringProperty reply;
     private StringProperty error;
+//    private PropertyChangeSupport support;
 
     public ConvertViewModel(Model model){
         this.model = model;
         request = new SimpleStringProperty();
         reply = new SimpleStringProperty();
         error = new SimpleStringProperty();
+//        this.support = new PropertyChangeSupport(this);
     }
 
     public void convert()
@@ -47,18 +53,13 @@ public class ConvertViewModel
         property.bindBidirectional(error);
     }
 
-    public String getRequest()
-    {
-        return request.get();
-    }
-
-    public String getReply()
-    {
-        return reply.get();
-    }
-
-    public String getError()
-    {
-        return error.get();
-    }
+//    public void addPropertyChangeListener(PropertyChangeListener listener)
+//    {
+//        support.addPropertyChangeListener(listener);
+//    }
+//
+//    public void removePropertyChangeListener(PropertyChangeListener listener)
+//    {
+//        support.removePropertyChangeListener(listener);
+//    }
 }

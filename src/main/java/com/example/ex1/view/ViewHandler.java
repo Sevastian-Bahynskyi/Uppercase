@@ -22,13 +22,13 @@ public class ViewHandler
     public void start(Stage primaryStage)
     {
         this.primaryStage = primaryStage;
-        currentScene = new Scene(viewFactory.loadView("StupidId"));
-        openView("StupidId");
+        currentScene = new Scene(viewFactory.load(ViewFactory.CONVERT));
+        openView(ViewFactory.CONVERT);
     }
 
     public void openView(String id)
     {
-        Region root = viewFactory.loadView(id);
+        Region root = viewFactory.load(id);
         currentScene.setRoot(root);
         if (root.getUserData() == null) {
             primaryStage.setTitle("");
